@@ -1,17 +1,19 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
-import UserLayout from './Components/User/UserLayout.jsx'
-import UserProduct from './Components/User/UserProduct.jsx'
-import UserLogin from './Components/User/UserLogin.jsx'
-import UserHome from './Components/User/UserHome.jsx'
-import UserCart from './Components/User/UserCart.jsx'
-import UserProductDetail from './Components/User/UserProductDetail.jsx'
-import AdminLayout from './Components/Admin/AdminLayout.jsx'
-import AdminProduct from './Components/Admin/AdminProduct.jsx'
-import AdminOrders from './Components/Admin/AdminOrders.jsx'
-import AdminNewProduct from './Components/Admin/AdminNewProduct.jsx'
-import AdminUpdateProduct from './Components/Admin/AdminUpdateProduct.jsx'
+import Home from './Components/Pages/Home/Home.jsx'
+import ProductList from './Components/Pages/Product/ProductList.jsx'
+import Product from './Components/Pages/Product/Product.jsx'
+import Login from './Components/Pages/Login/Login.jsx'
+import Cart from './Components/Pages/Cart/Cart.jsx'
+import Layout from './Components/Pages/Layouts/Layout.jsx'
+import AdminLayout from './Components/Pages/Layouts/AdminLayout.jsx'
+import Dashboard from './Components/Pages/Admin/Dashboard/Dashboard.jsx'
+import ProductListAdmin from './Components/Pages/Admin/Product/ProductList.jsx'
+import NewProduct from './Components/Pages/Admin/Product/NewProduct.jsx'
+import UpdateProduct from './Components/Pages/Admin/Product/UpdateProduct.jsx'
+import Order from './Components/Pages/Admin/Order/Order.jsx'
+
 
 function App() {
 
@@ -19,19 +21,23 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<UserLayout />}>
-        <Route index element={<UserHome />} />
-        <Route path="/products" element={<UserProduct />} />
-        <Route path="/products/:id" element={<UserProductDetail />} />
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/cart" element={<UserCart />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="products" >
+          <Route index element={<ProductList />} />
+          <Route path=":id" element={<Product />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="cart" element={<Cart />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
-        <Route index element={<AdminDashboard />} />
-        <Route path="/products" element={<AdminProduct />} />
-        <Route path="/products/new" element={<AdminNewProduct />} />
-        <Route path="/products/:id" element={<AdminUpdateProduct />} />
-        <Route path="/orders" element={<AdminOrders />} />
+        <Route index element={<Dashboard />} />
+        <Route path="products" >
+          <Route index element={<ProductListAdmin />} />
+          <Route path="new" element={<NewProduct />} />
+          <Route path=":id" element={<UpdateProduct />} />
+        </Route>
+        <Route path="orders" element={<Order />} />
       </Route>
     </Routes>
     </BrowserRouter>
