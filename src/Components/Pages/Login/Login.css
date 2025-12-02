@@ -1,0 +1,66 @@
+.login{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    flex-direction: column;
+    padding: 20px 35px;
+    background-color: #303030;
+    border-radius: 8px;
+    min-width: 400px;
+}
+
+.login h1{
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.login .subtitle{
+    font-style: italic;
+    margin:0;
+    font-size: 0.8rem;
+}
+
+.login .form {
+    padding: 8px;
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.login .form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.login .password-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login .form-group label{
+    margin-bottom: 8px;
+}
+
+.login .form-group input{
+    width: 100%;
+    padding: 8px;
+}
+
+.login .form-group input::placeholder{
+    color: #B0B0B0;
+}
+
+.login .connect-btn{
+    width: 100%;
+    background-color: #1565c0;
+}
+
+.login .button-footer{
+    font-size: 0.8rem;
+    display: flex;
+    gap: 5px;
+}

@@ -28,6 +28,8 @@ function App() {
           <Route path=":id" element={<Product />} />
         </Route>
         <Route path="login" element={<Login />} />
+        <Route path="register" element={<SignIn />} />
+
         <Route path="cart" element={<Cart />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>

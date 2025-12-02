@@ -1,12 +1,12 @@
 import { Link } from 'react-router';
-import './Login.css';
+import './SignIn.css';
 import PasswordField from '../../PasswordField/PasswordField.jsx';
 
-export default function Login({ }) {
+export default function SignIn({ }) {
     return (
-        <div className='login'>
-            <h1>Connexion</h1>
-            <p className='subtitle'>Entrez vos identifiants pour accéder à votre compte</p>
+        <div className='sign-in'>
+            <h1>Inscription</h1>
+            <p className='subtitle'>Créer un compte</p>
             <div className="form">
                 <div className="form-group">
                     <label htmlFor="email">Email</label>

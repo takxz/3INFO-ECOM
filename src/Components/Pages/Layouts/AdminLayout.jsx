@@ -8,9 +8,9 @@ export default function AdminLayout({}) {
     return (
         <div className="layout">
             <div className='navbar'>
-                <NavLink to="/admin">Dashboard</NavLink>
-                <NavLink to="/admin/products">Produits</NavLink>
-                <NavLink to ="/orders">Commandes</NavLink>
+                <NavLink to="/admin" end>Dashboard</NavLink>
+                <NavLink to="/admin/products" end>Produits</NavLink>
+                <NavLink to ="/admin/orders" end>Commandes</NavLink>
             </div>
         <Outlet />
         </div>
