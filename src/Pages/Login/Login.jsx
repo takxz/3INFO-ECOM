@@ -6,6 +6,7 @@ import PopUp from '../../Components/PopUp/Modal.jsx';
 import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import Modal from '../../Components/PopUp/Modal.jsx';
+import { login } from '../../service/auth.js';
 
 export default function Login({ }) {
 
@@ -14,26 +15,11 @@ export default function Login({ }) {
     const [isValidEmail, setIsValidEmail] = useState(false);
 
     const sendLoginRequest = async () => {
-        try {
-            const res = await fetch('http://localhost:3000/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-            const data = await res.json();
-            if (!res.ok) {
-                console.log('Login failed', data, res.status);
-                setIsValidEmail(false);
-                setShowPopUp(true);
-                return;
-            }
-            console.log('Login success', data);
+        const result = await login(email);
+        if (result.ok){
             setIsValidEmail(true);
             setShowPopUp(true);
-        } catch (erreur) {
-            console.error('erreur', erreur);
+        } else {
             setIsValidEmail(false);
             setShowPopUp(true);
         }
