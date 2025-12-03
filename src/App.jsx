@@ -1,18 +1,19 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
-import Home from './Components/Pages/Home/Home.jsx'
-import ProductList from './Components/Pages/Product/ProductList.jsx'
-import Product from './Components/Pages/Product/Product.jsx'
-import Login from './Components/Pages/Login/Login.jsx'
-import Cart from './Components/Pages/Cart/Cart.jsx'
-import Layout from './Components/Pages/Layouts/Layout.jsx'
-import AdminLayout from './Components/Pages/Layouts/AdminLayout.jsx'
-import Dashboard from './Components/Pages/Admin/Dashboard/Dashboard.jsx'
-import ProductListAdmin from './Components/Pages/Admin/Product/ProductList.jsx'
-import NewProduct from './Components/Pages/Admin/Product/NewProduct.jsx'
-import UpdateProduct from './Components/Pages/Admin/Product/UpdateProduct.jsx'
-import Order from './Components/Pages/Admin/Order/Order.jsx'
+import Home from './Pages/Home/Home.jsx'
+import ProductList from './Pages/Product/ProductList.jsx'
+import Product from './Pages/Product/Product.jsx'
+import Login from './Pages/Login/Login.jsx'
+import Cart from './Pages/Cart/Cart.jsx'
+import Layout from './Pages/Layouts/Layout.jsx'
+import AdminLayout from './Pages/Layouts/AdminLayout.jsx'
+import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx'
+import ProductListAdmin from './Pages/Admin/Product/ProductList.jsx'
+import NewProduct from './Pages/Admin/Product/NewProduct.jsx'
+import UpdateProduct from './Pages/Admin/Product/UpdateProduct.jsx'
+import Order from './Pages/Admin/Order/Order.jsx'
+import Register from './Pages/Login/Register.jsx'
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
           <Route path=":id" element={<Product />} />
         </Route>
         <Route path="login" element={<Login />} />
-        <Route path="register" element={<SignIn />} />
+        <Route path="register" element={<Register />} />
 
         <Route path="cart" element={<Cart />} />
       </Route>
