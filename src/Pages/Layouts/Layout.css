@@ -12,7 +12,7 @@
     display: flex;
 }
 
-.navbar a{
+.navbar a .navlink{
     padding: 1rem;
     color: white;
     text-decoration: none;
@@ -25,6 +25,6 @@
     background-color: #505050;
 }
 
-.navbar a:hover{
+.navbar a:hover .navlink{
     background-color: #505050;
 }

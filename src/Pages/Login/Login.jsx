@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import './Login.css';
 import PasswordField from '../../Components/PasswordField/PasswordField.jsx';
 import Card from '../../Components/Card/Card.jsx';
@@ -15,13 +15,14 @@ export default function Login({ }) {
     const [email, setEmail] = useState('');
     const [isValidEmail, setIsValidEmail] = useState(false);
     const { setAuth } = useAuth();
+    const navigate = useNavigate();
 
     const sendLoginRequest = async () => {
         const result = await login(email);
         if (result.ok){
             setIsValidEmail(true);
-            setShowPopUp(true);
             setAuth(result.data);
+            navigate('/products');
         } else {
             setIsValidEmail(false);
             setShowPopUp(true);
