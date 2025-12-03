@@ -1,8 +1,15 @@
 import { Link } from 'react-router';
 import './Login.css';
-import PasswordField from '../../Components/PasswordField/PasswordField';
+import PasswordField from '../../Components/PasswordField/PasswordField.jsx';
+import Card from '../../Components/Card/Card.jsx';
+import PopUp from '../../Components/PopUp/PopUp.jsx';
+import { useState } from 'react';
+import { X } from 'lucide-react';
 
 export default function Login({ }) {
+
+    const [showPopUp, setShowPopUp] = useState(false);
+
     return (
         <div className='login'>
             <h1>Connexion</h1>
@@ -20,7 +27,13 @@ export default function Login({ }) {
                     <PasswordField />
                 </div>
                 <div className="form-group">
-                    <button className='connect-btn'>Connexion</button>
+                    <button className='connect-btn' onClick={() => setShowPopUp(true)}>Connexion</button>
+                    <PopUp showPopUp={showPopUp} closePopUp={() => setShowPopUp(false)}>
+                        <Card>
+                            <h2>Connexion réussie !</h2>
+                            <p>Bienvenue</p>
+                        </Card>
+                    </PopUp>
                     <div className='button-footer'>
                         Pas encore de compte?
                         <Link to="/register">S'inscrire</Link>

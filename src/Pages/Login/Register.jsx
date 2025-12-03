@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import './Register.css';
-import PasswordField from '../../Components/PasswordField/PasswordField';
+import PasswordField from '../../Components/PasswordField/PasswordField.jsx';
 
 export default function Register({ }) {
     return (
