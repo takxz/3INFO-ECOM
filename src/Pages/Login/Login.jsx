@@ -7,18 +7,21 @@ import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import Modal from '../../Components/PopUp/Modal.jsx';
 import { login } from '../../service/auth.js';
+import { useAuth } from '../../Context/auth.context.jsx';
 
 export default function Login({ }) {
 
     const [showPopUp, setShowPopUp] = useState(false);
     const [email, setEmail] = useState('');
     const [isValidEmail, setIsValidEmail] = useState(false);
+    const { setAuth } = useAuth();
 
     const sendLoginRequest = async () => {
         const result = await login(email);
         if (result.ok){
             setIsValidEmail(true);
             setShowPopUp(true);
+            setAuth(result.data);
         } else {
             setIsValidEmail(false);
             setShowPopUp(true);

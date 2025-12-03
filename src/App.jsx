@@ -14,12 +14,14 @@ import NewProduct from './Pages/Admin/Product/NewProduct.jsx'
 import UpdateProduct from './Pages/Admin/Product/UpdateProduct.jsx'
 import Order from './Pages/Admin/Order/Order.jsx'
 import Register from './Pages/Login/Register.jsx'
+import { AuthProvider } from './Context/auth.context.jsx'
 
 
 function App() {
 
   return (
     <>
+    <AuthProvider>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -44,6 +46,7 @@ function App() {
       </Route>
     </Routes>
     </BrowserRouter>
+    </AuthProvider>
     </>
   )
 }
