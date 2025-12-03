@@ -3,12 +3,41 @@ import './Login.css';
 import PasswordField from '../../Components/PasswordField/PasswordField.jsx';
 import Card from '../../Components/Card/Card.jsx';
 import PopUp from '../../Components/PopUp/Modal.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
+import Modal from '../../Components/PopUp/Modal.jsx';
 
 export default function Login({ }) {
 
     const [showPopUp, setShowPopUp] = useState(false);
+    const [email, setEmail] = useState('');
+    const [isValidEmail, setIsValidEmail] = useState(false);
+
+    const sendLoginRequest = async () => {
+        try {
+            const res = await fetch('http://localhost:3000/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                console.log('Login failed', data, res.status);
+                setIsValidEmail(false);
+                setShowPopUp(true);
+                return;
+            }
+            console.log('Login success', data);
+            setIsValidEmail(true);
+            setShowPopUp(true);
+        } catch (erreur) {
+            console.error('erreur', erreur);
+            setIsValidEmail(false);
+            setShowPopUp(true);
+        }
+    }
 
     return (
         <div className='login'>
@@ -17,7 +46,7 @@ export default function Login({ }) {
             <div className="form">
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="example@mail.com" />
+                    <input type="email" name="email" id="email" placeholder="example@mail.com" onKeyUp={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <div className="password-header">
@@ -27,13 +56,17 @@ export default function Login({ }) {
                     <PasswordField />
                 </div>
                 <div className="form-group">
-                    <button className='connect-btn' onClick={() => setShowPopUp(true)}>Connexion</button>
-                    <PopUp showPopUp={showPopUp} closePopUp={() => setShowPopUp(false)}>
-                        <Card>
-                            <h2>Connexion réussie !</h2>
-                            <p>Bienvenue</p>
-                        </Card>
-                    </PopUp>
+                    <button className='connect-btn' onClick={() => sendLoginRequest()}>Connexion</button>
+                    {isValidEmail &&
+                    <Modal showPopUp={showPopUp} closePopUp={() => setShowPopUp(false)}>
+                        Connexion réussie!
+                    </Modal>
+                    }
+                    {!isValidEmail &&
+                    <Modal showPopUp={showPopUp} closePopUp={() => setShowPopUp(false)}>
+                        Email ou mot de passe incorrect.
+                    </Modal>
+                    }
                     <div className='button-footer'>
                         Pas encore de compte?
                         <Link to="/register">S'inscrire</Link>

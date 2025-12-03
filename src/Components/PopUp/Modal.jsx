@@ -4,7 +4,6 @@ import './Modal.css';
 
 export default function Modal({ showPopUp, closePopUp, children }) {
 
-
     if (!showPopUp) return null;
 
     return (
