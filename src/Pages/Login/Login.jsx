@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import './Login.css';
 import PasswordField from '../../Components/PasswordField/PasswordField.jsx';
 import Card from '../../Components/Card/Card.jsx';
-import PopUp from '../../Components/PopUp/PopUp.jsx';
+import PopUp from '../../Components/PopUp/Modal.jsx';
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
